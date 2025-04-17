@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: lightgoldenrodyellow;
+        }
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            padding: 40px;
+            background: gray;
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+            border-radius: 10px;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            border: 3px solid purple;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        thead {
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #E7F3FF;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #B3D7FF;
+        }
+        tbody tr:hover {
+            background-color: #A0C4FF;
+        }
+        .sky-blue-theme {
+            background-color: skyblue;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hello {{ user.first_name }}</h1>
+    <h3>
+        This system predicts the possibility of diabetes.
+    </h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>S.NO</th>
+                <th>TESTS</th>
+                <th>VALUE OBTAINED</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Pregnancies</td><td>{{ pregnancies }}</td></tr>
+            <tr><td>2</td><td>Glucose</td><td>{{ glucose }}</td></tr>
+            <tr><td>3</td><td>Blood Pressure</td><td>{{ bloodpressure }}</td></tr>
+            <tr><td>4</td><td>Skin Thickness</td><td>{{ skinthickness }}</td></tr>
+            <tr><td>5</td><td>Insulin</td><td>{{ insulin }}</td></tr>
+            <tr><td>6</td><td>BMI</td><td>{{ bmi }}</td></tr>
+            <tr><td>7</td><td>Diabetes Pedigree Function</td><td>{{ diabetespedigreefunction }}</td></tr>
+            <tr><td>8</td><td>Age</td><td>{{ age }}</td></tr>
+        </tbody>
+    </table>
+
+    <div class="sky-blue-theme" style="font-size: 24px; font-weight: bold;">
+        {{ data }}
+    </div>
+
+    <!-- Remedies Section -->
+    <div class="sky-blue-theme">
+        <h2>Health Suggestions</h2>
+        <ul style="text-align: left; list-style-type: none;">
+            {% for tip in remedy %}
+                <li>✅ {{ tip }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h3><center><a href="/">Log out</a></center></h3>
+
+</body>
+</html>

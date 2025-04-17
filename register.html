@@ -1,0 +1,161 @@
+{% load static %}
+<html>
+{% block content %}
+<head>
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   background-image: url({% static 'manasa.png' %});
+   background-size: cover;
+   background-position: center;
+   font-family: 'Poppins', sans-serif;
+   color: #001f3f; /* Changed from white to dark blue */
+}
+
+.box {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 420px;
+   padding: 40px;
+   background: rgba(135, 206, 235, 0.9);
+   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+   border-radius: 12px;
+   text-align: center;
+}
+
+.box h1 {
+   margin-bottom: 30px;
+   color: #001f3f;
+   font-weight: bold;
+}
+
+.inputbox {
+   position: relative;
+   margin-bottom: 25px;
+}
+
+.inputbox input,
+.inputbox select {
+   width: 100%;
+   padding: 10px;
+   font-size: 16px;
+   color: #001f3f;
+   background: transparent;
+   border: 1px solid rgba(0, 0, 0, 0.3);
+   border-radius: 5px;
+   outline: none;
+   transition: 0.3s ease-in-out;
+}
+
+.inputbox input:focus,
+.inputbox select:focus {
+   border-color: #1e90ff;
+   box-shadow: 0 0 8px rgba(30, 144, 255, 0.6);
+}
+
+.inputbox label {
+   position: absolute;
+   top: 50%;
+   left: 12px;
+   transform: translateY(-50%);
+   font-size: 16px;
+   color: rgba(0, 0, 0, 0.6);
+   pointer-events: none;
+   transition: 0.3s ease-in-out;
+}
+
+.inputbox input:focus ~ label,
+.inputbox input:valid ~ label,
+.inputbox select:focus ~ label {
+   top: 5px;
+   left: 10px;
+   font-size: 12px;
+   color: #1e90ff;
+}
+
+input[type="submit"] {
+   background: #1e90ff;
+   border: none;
+   outline: none;
+   color: #fff;
+   padding: 12px 20px;
+   font-size: 16px;
+   font-weight: bold;
+   cursor: pointer;
+   border-radius: 5px;
+   transition: 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+   background: #4682b4;
+   box-shadow: 0 0 10px rgba(30, 144, 255, 0.8);
+}
+
+.message {
+   margin-top: 10px;
+   color: #001f3f;
+   font-weight: bold;
+   font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+   <h1>REGISTER</h1>
+   <form action="register" method="POST">
+      {% csrf_token %}
+      
+      <div class="inputbox">
+         <input type="text" name="first_name" required=""/>
+         <label>Firstname</label>
+      </div>
+      
+      <div class="inputbox">
+         <input type="text" name="last_name" required=""/>
+         <label>Lastname</label>
+      </div>
+      
+      <div class="inputbox">
+         <input type="text" name="username" required=""/>
+         <label>Username</label>
+      </div>
+
+      <div class="inputbox">
+         <select name="gender" required="">
+            <option value="" disabled selected hidden>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+         </select>
+      </div>
+      
+      <div class="inputbox">
+         <input type="email" name="email" required=""/>
+         <label>Email</label>
+      </div>
+      
+      <div class="inputbox">
+         <input type="password" name="password1" required=""/>
+         <label>Password</label>
+      </div>
+      
+      <div class="inputbox">
+         <input type="password" name="password2" required=""/>
+         <label>Confirm Password</label>
+      </div>
+      
+      <input type="submit" value="Register">
+   </form>
+
+   <div class="message">
+      {% for message in messages %}
+         <p>{{ message }}</p>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}
+</body>
+</html>

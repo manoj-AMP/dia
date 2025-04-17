@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction Form</title>
+    <style>
+        /* Body Styling */
+        body {
+            background-color: #87CEEB;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Form Container */ 
+        form {
+            border: 2px solid #ddd;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            width: 50%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Labels */
+        label {
+            font-weight: bold;
+            color: #333;
+            font-size: 16px;
+        }
+
+        /* Input Fields */
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #f9f9f9;
+        }
+
+        /* Button Styling */
+        button {
+            background: #1e90ff;
+            color: white;
+            font-size: 18px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #4682b4;
+            color: black;
+        }
+
+        /* Title */
+        h2 {
+            text-align: center;
+            color: #1e90ff;
+            font-size: 26px;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            form {
+                width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            const gender = "{{ gender|escapejs }}";  // passed from the view
+            const pregnancyField = document.getElementById("pregnancies");
+
+            if (gender === "Male") {
+                pregnancyField.value = 0;
+                pregnancyField.readOnly = true;
+                pregnancyField.style.display = "none";  // Hide the field for males
+            } else {
+                pregnancyField.value = "";
+                pregnancyField.readOnly = false;
+                pregnancyField.style.display = "block";  // Show the field for other genders
+            }
+        };
+    </script>
+</head>
+<body>
+
+<h2>Enter Patient Details</h2>
+
+<form action="{% url 'predict' %}" method="post">
+    {% csrf_token %}
+
+    <label>Pregnancies</label>
+    <input type="number" id="pregnancies" name="pregnancies" min="0" required placeholder="Enter number of pregnancies">
+
+    <label>Glucose Level</label>
+    <input type="text" placeholder="Enter glucose level" name="glucose" required>
+
+    <label>Blood Pressure</label>
+    <input type="text" placeholder="Enter blood pressure" name="bloodpressure" required>
+
+    <label>Skin Thickness</label>
+    <input type="text" placeholder="Enter skin thickness" name="skinthickness" required>
+
+    <label>Insulin Level</label>
+    <input type="text" placeholder="Enter insulin level" name="insulin" required>
+
+    <label>BMI</label>
+    <input type="text" placeholder="Enter BMI" name="bmi" required>
+
+    <label>Diabetes Pedigree Function</label>
+    <input type="text" placeholder="Enter Diabetes Pedigree Function" name="diabetespedigreefunction" required>
+
+    <label>Age</label>
+    <input type="text" placeholder="Enter age" name="age" required>
+
+    <button type="submit">Predict</button>
+</form>
+
+</body>
+</html>

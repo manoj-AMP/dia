@@ -1,0 +1,203 @@
+{% load static %}
+<html>
+<head>
+<style>
+/* General Body Styling */
+body {
+    background: url({% static 'images/6.jfif' %});
+    background-size: cover;
+    background-color: #e7f0fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navbar Styling */
+table {
+    width: 100%;
+}
+
+table td {
+    text-align: center;
+}
+
+button {
+    background-color: #0056b3;
+    color: white;
+    font-size: 20px;
+    font-family: "Times New Roman", serif;
+    height: 80px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+    color: lightgray;
+    background-color: #003366;
+}
+
+/* Main Content Section */
+.container {
+    padding: 30px;
+}
+
+.xx {
+    text-align: justify;
+    font-size: 20px;
+    line-height: 30px;
+    text-indent: 0px;
+    padding: 20px;
+    opacity: 0.9;
+}
+
+.yy {
+    text-align: center;
+    font-size: 18px;
+    line-height: 10px;
+    text-indent: 10px;
+    padding: 0px;
+}
+
+h1 {
+    color: #003366;
+    text-align: center;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Font shadow added */
+    animation: fadeIn 2s ease, scaleIn 1s ease-in-out; /* Animation for fade-in and scale */
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+p.xx {
+    font-size: 20px;
+    line-height: 30px;
+    text-indent: 0px;
+    padding: 20px;
+    opacity: 0.9;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Font shadow added to paragraph */
+}
+
+img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .xx {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .navbar button {
+        width: 200px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar button {
+        width: 150px;
+        font-size: 16px;
+    }
+
+    img {
+        width: 80%;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar Section -->
+<table border="0" width="100%" style="background-color: #0056b3;" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="60%">
+            <form method="get" action="#" style="font-size: 0px">
+                <button type="submit">Diabetes Prediction</button>
+            </form>
+        </td>
+        <td width="8%">
+            <form method="get" action="login" style="font-size: 0px">
+                <button type="submit">Login</button>
+            </form>
+        </td>
+        <td width="8%">
+            <form method="get" action="register" style="font-size: 0px">
+                <button type="submit">Register</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<!-- Image Section -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" bgcolor="#dce6f1">
+    <tr height="250px">
+        <td width=3%></td>
+        <td><p></p></td>
+        <td width="30%"><img src="{% static 'niki.jpg' %}" height="200px" width="100%"></td>
+        <td width="30%"><img src="{% static 'lucky.jpg' %}" height="200px" width="100%"></td>
+        <td width="30%"><img src="{% static 'man.jpg' %}" height="200px" width="100%"></td>
+        <td width=3%></td>
+    </tr>
+</table>
+
+<!-- Main Content Section -->
+<h1>Welcome to Diabetes Prediction System!!!</h1>
+
+<!-- Information Section -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" bgcolor="#85b7dc">
+    <tr height="400px">
+        <td width="30%" align="center"><img src="{% static 'ym.jpg' %}" height="200px" width="100%"></td>
+        <td>
+            <p class="xx" style="color: #003366;">
+                <b>Diabetes is a common chronic disease that poses a great threat to human health. Here is the prediction system for diabetes. This analysis will help patients to check whether they are affected by diabetes or not through our online website of Diabetes Prediction.</b>
+            </p>
+        </td>
+        <td width="30%" align="center"><img src="{% static 'tm.jpeg' %}" height="200px" width="100%"></td>
+        <td width=3%></td>
+    </tr>
+</table>
+
+<!-- Footer Section -->
+<div class="footer" style="text-align: center; padding: 20px; background-color: #0056b3; color: white;">
+    <p>&copy; 2025 Diabetes Prediction System | All Rights Reserved</p>
+</div>
+
+</body>
+{% block content %}  
+{% endblock %}
+</html>
